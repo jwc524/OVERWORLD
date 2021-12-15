@@ -1,4 +1,4 @@
-package olympians;
+package olympian;
 
 public class Athena {
 }
