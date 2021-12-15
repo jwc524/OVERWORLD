@@ -1,0 +1,24 @@
+IDEAS
+
+* OLYMPIANS
+    -> Zeus
+    -> Hera
+    -> Poseidon
+    -> Demeter
+    -> Athena
+    -> Apollo
+    -> Artemis
+    -> Ares
+    -> Hephaestus
+    -> Aphrodite
+    -> Hermes
+    -> Dionysus
+
+* MAPS
+    -> Mount Olympus? (main map)
+
+* ABILITIES / EPITHETS
+    -> Zeus
+        + Areius ("warlike", "the atoning one")
+        + Olympios ("king of the gods")
+        + Xenios ("patron of hospitality", "avenger of wrongs")
