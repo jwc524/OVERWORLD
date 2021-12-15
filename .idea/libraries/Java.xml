@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Java">
+    <CLASSES>
+      <root url="file:///Applications/BlueJ/BlueJ.app/Contents/Resources/Java" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file:///Applications/BlueJ/BlueJ.app/Contents/Resources/Java/tutorial" />
+    </SOURCES>
+    <jarDirectory url="file:///Applications/BlueJ/BlueJ.app/Contents/Resources/Java" recursive="false" />
+  </library>
+</component>
