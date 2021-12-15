@@ -25,6 +25,11 @@ public class Olympian {
         return this;
     }
 
+    public Olympian setSlowSpeed(float SLOW_SPEED) {
+        this.SLOW_SPEED = SLOW_SPEED;
+        return this;
+    }
+
     public Olympian setWalkSpeed(float WALK_SPEED) {
         this.WALK_SPEED = WALK_SPEED;
         return this;
@@ -38,6 +43,14 @@ public class Olympian {
     public Olympian setRegenerationSpeed(float regenSpeed) {
         this.REGENERATION_SPEED = regenSpeed;
         return this;
+    }
+
+    public void setBlocking(boolean blocking) {
+        this.blocking = blocking;
+    }
+
+    public void setSprinting(boolean sprinting) {
+        this.sprinting = sprinting;
     }
 
     public String getName() {
@@ -66,6 +79,14 @@ public class Olympian {
 
     public float getRegenerationSpeed() {
         return REGENERATION_SPEED;
+    }
+
+    public boolean isBlocking() {
+        return this.blocking;
+    }
+
+    public boolean isSprinting() {
+        return this.sprinting;
     }
 
 }
