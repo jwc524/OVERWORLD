@@ -1,4 +1,4 @@
-package game;
+package overworld;
 
 import graphics.Screen;
 import input.Input;
@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.image.*;
 import java.io.Serial;
 
-public class Game extends Canvas implements Runnable {
+public class OverworldGame extends Canvas implements Runnable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -30,7 +30,7 @@ public class Game extends Canvas implements Runnable {
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private DataBuffer buffer = image.getRaster().getDataBuffer();
 
-    public Game() {
+    public OverworldGame() {
         Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
         this.setPreferredSize(size);
 
@@ -42,7 +42,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     public static void main(String[] args) {
-        Game game = new Game();
+        OverworldGame game = new OverworldGame();
 
         game.start();
     }

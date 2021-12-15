@@ -1,16 +1,16 @@
 package graphics;
 
-import game.Game;
+import overworld.OverworldGame;
 
 import java.util.Arrays;
 
 public class Screen {
 
-    private Game game;
+    private OverworldGame game;
     private int width, height;
     public int[] pixels;
 
-    public Screen(int width, int height, Game game) {
+    public Screen(int width, int height, OverworldGame game) {
         this.width = width;
         this.height = height;
         this.game = game;

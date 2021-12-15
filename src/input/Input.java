@@ -1,6 +1,6 @@
 package input;
 
-import game.Game;
+import overworld.OverworldGame;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -9,9 +9,9 @@ import java.awt.event.MouseListener;
 
 public class Input implements MouseListener, KeyListener {
 
-    private Game game;
+    private OverworldGame game;
 
-    public Input(Game game) {
+    public Input(OverworldGame game) {
         this.game = game;
     }
 
