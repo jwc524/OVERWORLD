@@ -5,7 +5,7 @@ import abilities.Ability;
 public class Olympian {
 
     private String name;
-    private final OlympianType TYPE;
+    private final OLYMPIANTYPE TYPE;
 
     private float MAX_HEALTH;
     private float REGENERATION_SPEED;
@@ -17,12 +17,11 @@ public class Olympian {
     private boolean blocking = false;
     private boolean sprinting = false;
 
-    private Ability ABILITY_ONE;
-    private Ability ABILITY_TWO;
-    private Ability ABILITY_THREE;
-    private Ability ABILITY_FOUR;
+    private Ability L1_ABILITY;
+    private Ability L2_ABILITY;
+    private Ability ULTIMATE;
 
-    public Olympian(String name, OlympianType TYPE) {
+    public Olympian(String name, OLYMPIANTYPE TYPE) {
         this.name = name;
         this.TYPE = TYPE;
     }
@@ -52,26 +51,6 @@ public class Olympian {
         return this;
     }
 
-    public Olympian setAbilityOne(Ability ability) {
-        this.ABILITY_ONE = ability;
-        return this;
-    }
-
-    public Olympian setAbilityTwo(Ability ability) {
-        this.ABILITY_TWO = ability;
-        return this;
-    }
-
-    public Olympian setAbilityThree(Ability ability) {
-        this.ABILITY_THREE = ability;
-        return this;
-    }
-
-    public Olympian setAbilityFour(Ability ability) {
-        this.ABILITY_THREE = ability;
-        return this;
-    }
-
     public void setBlocking(boolean blocking) {
         this.blocking = blocking;
     }
@@ -84,7 +63,7 @@ public class Olympian {
         return this.name;
     }
 
-    public OlympianType getOlympianType() {
+    public OLYMPIANTYPE getOlympianType() {
         return TYPE;
     }
 

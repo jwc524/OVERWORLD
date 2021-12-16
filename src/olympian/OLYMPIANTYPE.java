@@ -1,6 +1,6 @@
 package olympian;
 
-public enum OlympianType {
+public enum OLYMPIANTYPE {
 
     ZEUS("Zeus", 0),
     HERA("Hera", 1),
@@ -18,7 +18,7 @@ public enum OlympianType {
     String NAME;
     int ID;
 
-    OlympianType(String NAME, int ID) {
+    OLYMPIANTYPE(String NAME, int ID) {
         this.NAME = NAME;
         this.ID = ID;
     }

@@ -17,8 +17,17 @@ IDEAS
 * MAPS
     -> Mount Olympus? (main map)
 
-* ABILITIES / EPITHETS
+* ABILITIES / EPITHETS / MODES
     -> Zeus
-        + Areius ("warlike", "the atoning one")
-        + Olympios ("king of the gods")
-        + Xenios ("patron of hospitality", "avenger of wrongs")
+        + Epithets
+            - Areius ("warlike", "the atoning one")
+            - Olympios ("king of the gods")
+            - Xenios ("patron of hospitality", "avenger of wrongs")
+        + Abilities
+            - Lightning Strike
+                • if in combat, shadow of dark cloud forms over opponent, strikes them with specific number of bolts based on level of ability
+                • stunned for a certain period of time
+
+* COMBAT
+    -> Similar to Smash (hand-to-hand, specific abilities bound to specific keys), but are combinable
+    -> Similar to LoL (special abilities on cooldowns, "ults")
