@@ -1,5 +1,7 @@
 package olympian;
 
+import abilities.Ability;
+
 public class Olympian {
 
     private String name;
@@ -14,6 +16,11 @@ public class Olympian {
 
     private boolean blocking = false;
     private boolean sprinting = false;
+
+    private Ability ABILITY_ONE;
+    private Ability ABILITY_TWO;
+    private Ability ABILITY_THREE;
+    private Ability ABILITY_FOUR;
 
     public Olympian(String name, OlympianType TYPE) {
         this.name = name;
@@ -42,6 +49,26 @@ public class Olympian {
 
     public Olympian setRegenerationSpeed(float regenSpeed) {
         this.REGENERATION_SPEED = regenSpeed;
+        return this;
+    }
+
+    public Olympian setAbilityOne(Ability ability) {
+        this.ABILITY_ONE = ability;
+        return this;
+    }
+
+    public Olympian setAbilityTwo(Ability ability) {
+        this.ABILITY_TWO = ability;
+        return this;
+    }
+
+    public Olympian setAbilityThree(Ability ability) {
+        this.ABILITY_THREE = ability;
+        return this;
+    }
+
+    public Olympian setAbilityFour(Ability ability) {
+        this.ABILITY_THREE = ability;
         return this;
     }
 
