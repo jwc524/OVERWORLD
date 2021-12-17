@@ -27,6 +27,10 @@ IDEAS
             - Lightning Strike
                 • if in combat, shadow of dark cloud forms over opponent, strikes them with specific number of bolts based on level of ability
                 • stunned for a certain period of time
+    -> Hades
+        + Abilities
+            - Inverted Reality (Underworld)
+                • The map decays and everyone falls into the underworld, team with Hades on it gets temporary damage boost, but take the same amount of damage
 
 * COMBAT
     -> Similar to Smash (hand-to-hand, specific abilities bound to specific keys), but are combinable

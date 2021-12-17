@@ -1,7 +1,11 @@
 package overworld;
 
+import battle.Battle;
+import battle.Map;
 import graphics.Screen;
 import input.Input;
+import olympian.Zeus;
+import player.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +16,7 @@ public class OverworldGame extends Canvas implements Runnable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private String title = "OVERWORLD";
+    private final String title = "OVERWORLD";
     private final int WIDTH = 300;
     private final int HEIGHT = WIDTH / 16 * 9;
     private final int SCALE = 3;
@@ -20,15 +24,18 @@ public class OverworldGame extends Canvas implements Runnable {
     private int cycle = 0;
     private int color = 0xaf7ac5;
 
-    private JFrame frame;
+    private final JFrame frame;
     private Thread thread;
     private boolean running = false;
 
-    private Screen screen;
-    private Input input;
+    private int updates = 0;
 
-    private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-    private DataBuffer buffer = image.getRaster().getDataBuffer();
+    private final Screen screen;
+    private final Input input;
+    private static Battle battle;
+
+    private final BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+    private final DataBuffer buffer = image.getRaster().getDataBuffer();
 
     public OverworldGame() {
         Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
@@ -45,6 +52,12 @@ public class OverworldGame extends Canvas implements Runnable {
         OverworldGame game = new OverworldGame();
 
         game.start();
+
+        battle = new Battle(new Map()).setMatchTime(10);
+//        Player player = new Player("enigma").setCurrentOlympian(new Zeus("Zeus"));
+
+//        battle.addGod(player);
+        battle.start();
     }
 
     public synchronized void start() {
@@ -85,6 +98,8 @@ public class OverworldGame extends Canvas implements Runnable {
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
                 frame.setTitle(title + " | " + frames + "fps");
+                updates = frames;
+
                 frames = 0;
             }
         }
@@ -127,12 +142,68 @@ public class OverworldGame extends Canvas implements Runnable {
         }
 
         graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+
+        Font font = new Font("Lunatix OT", Font.PLAIN, 50);
+        FontMetrics fm = this.getFontMetrics(font);
+
+        graphics.setColor(Color.BLACK);
+        graphics.fillRect(0, 0, fm.stringWidth("00fps"), fm.getHeight());
+
+        graphics.setColor(Color.WHITE);
+        graphics.setFont(font);
+        graphics.drawString(updates + "fps", 0, fm.getAscent());
+
+        if (battle.isOngoing()) {
+            font = new Font("Lunatix OT", Font.PLAIN, 30);
+            String timeLeft = battle.getTimeLeftFancy();
+            fm = this.getFontMetrics(font);
+
+            graphics.setColor(Color.BLACK);
+            graphics.fillRect(0, getHeight() - fm.getHeight(), getWidth(), fm.getHeight());
+
+            graphics.setColor(Color.PINK);
+            graphics.setFont(font);
+            graphics.drawString(timeLeft, (getWidth() / 2) - fm.stringWidth(timeLeft), getHeight() - fm.getDescent());
+        }
+
+        int xOffset = -100;
+        int yOffset = 0;
+
+        font = new Font("Lunatix OT", Font.BOLD, 50);
+        graphics.setFont(font);
+
+        graphics.setColor(Color.DARK_GRAY);
+        graphics.drawString("W", (getWidth() / 2) + xOffset, (getHeight() / 2 - 50) + yOffset);
+        graphics.drawString("A", (getWidth() / 2 - 50) + xOffset, (getHeight() / 2) + yOffset);
+        graphics.drawString("S", (getWidth() / 2) + xOffset, (getHeight() / 2 + 50) + yOffset);
+        graphics.drawString("D", (getWidth() / 2 + 50) + xOffset, (getHeight() / 2) + yOffset);
+
+        graphics.setColor(Color.PINK);
+        if (input.up) graphics.drawString("W", (getWidth() / 2) + xOffset, (getHeight() / 2 - 50) + yOffset);
+        if (input.left) graphics.drawString("A", (getWidth() / 2 - 50) + xOffset, (getHeight() / 2) + yOffset);
+        if (input.down) graphics.drawString("S", (getWidth() / 2) + xOffset, (getHeight() / 2 + 50) + yOffset);
+        if (input.right) graphics.drawString("D", (getWidth() / 2 + 50) + xOffset, (getHeight() / 2) + yOffset);
+
+        xOffset = 100;
+
+        graphics.setColor(Color.DARK_GRAY);
+        graphics.drawString("J", (getWidth() / 2) + xOffset, (getHeight() / 2) + yOffset);
+        graphics.drawString("K", (getWidth() / 2 + 25) + xOffset, (getHeight() / 2) + yOffset);
+        graphics.drawString("L", (getWidth() / 2 + 50) + xOffset, (getHeight() / 2) + yOffset);
+        graphics.drawString("U", (getWidth() / 2 + 25) + xOffset, (getHeight() / 2 - 25) + yOffset);
+
+        graphics.setColor(Color.PINK);
+        if (input.L1) graphics.drawString("J", (getWidth() / 2) + xOffset, (getHeight() / 2) + yOffset);
+        if (input.L2) graphics.drawString("K", (getWidth() / 2 + 25) + xOffset, (getHeight() / 2) + yOffset);
+        if (input.L3) graphics.drawString("L", (getWidth() / 2 + 50) + xOffset, (getHeight() / 2) + yOffset);
+        if (input.ultimate) graphics.drawString("U", (getWidth() / 2 + 25) + xOffset, (getHeight() / 2 - 25) + yOffset);
+
         graphics.dispose();
         bs.show();
     }
 
     private void update() {
-
+        input.update();
     }
 
     private void setupWindow() {
@@ -140,9 +211,11 @@ public class OverworldGame extends Canvas implements Runnable {
         frame.add(this);
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
         frame.setResizable(true);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.requestFocus();
+        frame.setAlwaysOnTop(false);
 
         this.addMouseListener(input);
         this.addKeyListener(input);

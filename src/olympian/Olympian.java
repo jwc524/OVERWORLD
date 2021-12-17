@@ -4,26 +4,27 @@ import abilities.Ability;
 
 public class Olympian {
 
-    private String name;
-    private final OLYMPIANTYPE TYPE;
+    protected String name;
+    protected OLYMPIANTYPE TYPE;
 
-    private float MAX_HEALTH;
-    private float REGENERATION_SPEED;
+    protected float MAX_HEALTH;
+    protected float REGENERATION_SPEED;
 
-    private float SLOW_SPEED;
-    private float WALK_SPEED;
-    private float SPRINT_SPEED;
+    protected float SLOW_SPEED;
+    protected float WALK_SPEED;
+    protected float SPRINT_SPEED;
 
-    private boolean blocking = false;
-    private boolean sprinting = false;
+    protected boolean blocking = false;
+    protected boolean sprinting = false;
 
-    private Ability L1_ABILITY;
-    private Ability L2_ABILITY;
-    private Ability ULTIMATE;
+    protected Ability L1_ABILITY;
+    protected Ability L2_ABILITY;
+    protected Ability ULTIMATE;
 
-    public Olympian(String name, OLYMPIANTYPE TYPE) {
+    public Olympian ZEUS = new Zeus("Zeus").setMaxHealth(100).setSlowSpeed(0.5f).setWalkSpeed(1.0f).setSprintSpeed(2.0f).setRegenerationSpeed(5.0f).setL1Ability(Ability.THUNDERSTRIKE);
+
+    public Olympian(String name) {
         this.name = name;
-        this.TYPE = TYPE;
     }
 
     public Olympian setMaxHealth(float MAX_HEALTH) {
@@ -57,6 +58,21 @@ public class Olympian {
 
     public void setSprinting(boolean sprinting) {
         this.sprinting = sprinting;
+    }
+
+    public Olympian setL1Ability(Ability ability) {
+        this.L1_ABILITY = ability;
+        return this;
+    }
+
+    public Olympian setL2Ability(Ability ability) {
+        this.L2_ABILITY = ability;
+        return this;
+    }
+
+    public Olympian setUltimate(Ability ultimate) {
+        this.ULTIMATE = ultimate;
+        return this;
     }
 
     public String getName() {
@@ -93,6 +109,18 @@ public class Olympian {
 
     public boolean isSprinting() {
         return this.sprinting;
+    }
+
+    public Ability getL1Ability() {
+        return this.L1_ABILITY;
+    }
+
+    public Ability getL2Ability() {
+        return this.L2_ABILITY;
+    }
+
+    public Ability setUltimate() {
+        return this.ULTIMATE;
     }
 
 }

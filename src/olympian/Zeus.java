@@ -2,8 +2,9 @@ package olympian;
 
 public class Zeus extends Olympian {
 
-    public Zeus(String name, OLYMPIANTYPE TYPE) {
-        super("Zeus", OLYMPIANTYPE.ZEUS);
-    }
+    public Zeus(String name) {
+        super(name);
 
+        this.TYPE = OLYMPIANTYPE.ZEUS;
+    }
 }

@@ -13,7 +13,7 @@ public class Ability {
     private float HP;
     private int cooldown;
 
-    public Ability THUNDERSTRIKE = new THUNDERSTRIKE().setHP(5.0f).setCooldown(10);
+    public static Ability THUNDERSTRIKE = new THUNDERSTRIKE().setHP(5.0f).setCooldown(10).setLevelMultiplier(1.5f);
 
     public Ability(String name, ABILITYTYPE abilitytype, OLYMPIANTYPE olympianType) {
         this.name = name;
@@ -45,6 +45,18 @@ public class Ability {
     public Ability setLevelMultiplier(float multiplier) {
         this.levelMultiplier = multiplier;
         return this;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public OLYMPIANTYPE getOlympianType() {
+        return this.olympianType;
+    }
+
+    public ABILITYTYPE getAbilityType() {
+        return this.abilityType;
     }
 
     public float getHP() {
